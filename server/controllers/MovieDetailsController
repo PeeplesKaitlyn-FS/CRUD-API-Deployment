@@ -1,0 +1,38 @@
+// controllers/MovieDetailsController.js
+
+const Movie = require('../models/Movie');
+
+class MovieDetailsController {
+  static async getMovieById(req, res) {
+    try {
+      const movie = await Movie.findById(req.params.id);
+      if (!movie) {
+        res.status(404).json({ error: 'Movie not found' });
+      } else {
+        res.json(movie);
+      }
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  static async updateMovie(req, res) {
+    try {
+      const movie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json(movie);
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+
+  static async deleteMovie(req, res) {
+    try {
+      await Movie.findByIdAndRemove(req.params.id);
+      res.json({ message: 'Movie deleted successfully' });
+    } catch (error) {
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  }
+}
+
+module.exports = MovieDetailsController;
