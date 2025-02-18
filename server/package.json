@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
-  "start": "concurrently \"node server.js\" \"react-scripts start --proxy http://localhost:3000\"",
+  "start": "concurrently \"node server.js\" \"react-scripts start\"",
   "build": "react-scripts build"
 },
   "author": "",
