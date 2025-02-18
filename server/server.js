@@ -68,9 +68,16 @@ app.delete('/api/movies/:id', (req, res) => {
   });
 });
 
+// Serve the React app's index.html file for the root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/cinema-app/build/index.html'));
+});
+
 // Serve the React app's index.html file for any unknown routes
 app.get('*', (req, res) => {
-    app.use(express.static(path.join(__dirname, '../client/cinema-app')));});
+  res.sendFile(path.join(__dirname, '../client/cinema-app/build/index.html'));
+});
+
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
