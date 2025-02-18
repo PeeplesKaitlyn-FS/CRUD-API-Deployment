@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "build": "react-scripts build"
-  },
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "start": "concurrently \"node server.js\" \"react-scripts start --proxy http://localhost:3000\"",
+  "build": "react-scripts build"
+},
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "express": "^4.21.2",
-    "mongoose": "^8.10.1"
+    "mongoose": "^8.10.1",
+    "react-scripts": "^5.0.0"
   }
 }
