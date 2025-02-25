@@ -2,13 +2,14 @@ GET http://localhost:8000/movies
 
 ###
 
-GET http://localhost:8000/movies/62c32a4adf92621260ace820
+GET http://localhost:8000/movies/67bd71117fc12b3b5de46ed6
 
 ###
 
-POST http://localhost:8000/movies Content-Type: application/json
+POST http://localhost:8000/movies 
+Content-Type: application/json
 
-{ "title": "The Shawshank Redemption", "director": "Frank Darabont", "release_date": "1994-09-23", "genre": "Drama" }
+{ "title": "Once Upon a Time in Hollywood", "director": "Quentin Tarantino", "release_date": "2019-07-26", "genre": "Comedy, Drama" }
 
 ###
 
@@ -16,6 +17,7 @@ DELETE http://localhost:8000/movies/
 
 ###
 
-PATCH http://localhost:8000/movies/62c32abab9ba7d74af34c4e7 Content-Type: application/json
+PATCH http://localhost:8000/movies/67bd71117fc12b3b5de46ed6
+Content-Type: application/json
 
 { "title": "New Title", "director": "New Director", "release_date": "2020-01-01", "genre": "Action" }
