@@ -21,7 +21,7 @@ db.once("open", () => console.log("Database Connection Established"));
 
 app.use(express.json());
 app.use("/movies", movieRouter);
-app.use("/auth", authRouter);
+app.use("/auth", protectedRoute, authRouter);
 
 // look in the react build folder for static build
 app.use(express.static(path.join(__dirname, "../reactjs/build")));

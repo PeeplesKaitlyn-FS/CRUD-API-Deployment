@@ -11,6 +11,11 @@ const tokenForUser = (user) => {
     }, config.secret)
 }
 
+exports.signin = async (req, res, next) => {
+    const user = req.user
+    res.send({user_id: user._id, token: tokenForUser(user)})
+}
+
 exports.signup = async (req, res, next) => {
     const { email, password } = req.body
     try {
