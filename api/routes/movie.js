@@ -34,23 +34,25 @@ router.get('/:id', getMovie, async (req, res) => {
     res.json(res.movie)
 })
 
-// POST CREATE
+/// POST CREATE
 router.post('/', async (req, res) => {
     const movie = new Movie({
-        title: req.body.title,
-        director: req.body.director,
-        release_date: new Date(req.body.release_date),
-        genre: req.body.genre
+      title: req.body.title,
+      director: req.body.director,
+      release_date: new Date(req.body.release_date),
+      genre: req.body.genre,
+      description: req.body.description,
+      poster_path: req.body.poster_path
     })
     try {
-        const newMovie = await movie.save();
-        res.status(201).json(newMovie)
+      const newMovie = await movie.save();
+      res.status(201).json(newMovie)
     } catch(error) {
-        res.status(400).json({ message: error.message })
+      res.status(400).json({ message: error.message })
     }
-})
+  })
 
-// PATCH UPDATE
+/// PATCH UPDATE
 router.patch('/:id', getMovie, async (req, res) => {
     if(req.body.title != null){
         res.movie.title = req.body.title
@@ -63,6 +65,9 @@ router.patch('/:id', getMovie, async (req, res) => {
     }
     if(req.body.genre != null){
         res.movie.genre = req.body.genre
+    }
+    if(req.body.poster_path != null){
+        res.movie.poster_path = req.body.poster_path
     }
     try {
         const updatedMovie = await res.movie.save()
