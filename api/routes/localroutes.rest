@@ -9,11 +9,11 @@ GET http://localhost:8000/movies/67bd71117fc12b3b5de46ed6
 POST http://localhost:8000/movies 
 Content-Type: application/json
 
-{ "title": "Once Upon a Time in Hollywood", "director": "Quentin Tarantino", "release_date": "2019-07-26", "genre": "Comedy, Drama" }
+{ "title": "1917", "director": "Sam Mendes", "release_date": "2019-12-25", "genre": "War, Drama", "description": "Two young British soldiers during the First World War are given an impossible mission: deliver a message deep in enemy territory that will stop 1,600 men from walking into a deadly trap, and save the lives of their comrades.", "poster_path": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/AuGi3lx6F6psrSBf5z18HSjL2pG.jpg" }
 
 ###
 
-DELETE http://localhost:8000/movies/
+DELETE http://localhost:8000/movies/67bff33bf41b20ed31fd2c6b
 
 ###
 
