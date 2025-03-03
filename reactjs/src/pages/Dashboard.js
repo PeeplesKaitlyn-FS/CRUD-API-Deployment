@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import authService from "../services/auth.service";
+import movieService from "../services/movie.service";
 
 import '../App.css';
+import { response } from "express";
 
 function Dashboard() {
   const [movies, setMovies] = useState(null)
@@ -13,6 +17,8 @@ function Dashboard() {
     release_date: '',
     genre: ''
   })
+  const navigate = useNavigate();
+
 
   const API_BASE = process.env.NODE_ENV === 'development'
     ? `http://localhost:8000/api/v1`
@@ -20,6 +26,17 @@ function Dashboard() {
 
     let ignore = false;
     useEffect(() => {
+      movieService.getAllPrivateMovies().then(
+        response => {
+        setMovies(response.data)
+      }, (error) => {
+        console.log("Secured Page Error: ", error.response)
+        if(error.response && error.response.status === 403) {
+          authService.logout();
+          navigate("/login");
+        }
+      }
+      )
       
 
       if(!ignore){
