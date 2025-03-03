@@ -4,6 +4,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const cors = require("cors");
 
+const passport = require("passport");
+const protectedRoute = passport.authenticate("jwt", { session: false });
+
 const app = express();
 app.use(cors());
 
